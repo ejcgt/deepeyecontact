@@ -6,7 +6,7 @@ import math
 def model_static(pretrained=False, **kwargs):
     model = ResNet([3, 4, 6, 3], **kwargs)
     if pretrained:
-        print 'loading saved model weights'
+        print('loading saved model weights')
         model_dict = model.state_dict()
         snapshot = torch.load(pretrained)
         snapshot = {k: v for k, v in snapshot.items() if k in model_dict}
