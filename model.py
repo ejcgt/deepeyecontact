@@ -6,9 +6,11 @@ import math
 def model_static(pretrained=False, **kwargs):
     model = ResNet([3, 4, 6, 3], **kwargs)
     if pretrained:
-        print 'loading saved model weights'
+        print('loading saved model weights')
         model_dict = model.state_dict()
-        snapshot = torch.load(pretrained)
+        # Load the weights, mapping to the correct device
+        device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        snapshot = torch.load(pretrained, map_location=device)
         snapshot = {k: v for k, v in snapshot.items() if k in model_dict}
         model_dict.update(snapshot)
         model.load_state_dict(model_dict)
