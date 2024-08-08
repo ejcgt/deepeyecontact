@@ -177,7 +177,7 @@ def run(video_path, face_path, model_weight, jitter, vis, display_off, save_text
     if save_text:
         f.close()
     cap.release()
-    print 'DONE!'
+    print('DONE!')
 
 
 if __name__ == "__main__":
